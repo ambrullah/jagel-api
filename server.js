@@ -39,45 +39,73 @@ app.get("/flashsale", async (req, res) => {
 
         body{
             background:transparent;
-            padding:5px;
+            padding:8px;
             overflow-x:auto;
             overflow-y:hidden;
             font-family:Arial,sans-serif;
         }
 
+        body::-webkit-scrollbar{
+            display:none;
+        }
+
         .wrap{
             display:flex;
-            gap:10px;
+            gap:12px;
+        }
+
+        .wrap::-webkit-scrollbar{
+            display:none;
         }
 
         .item{
-            width:130px;
+            width:140px;
             flex-shrink:0;
             background:#fff;
-            border-radius:16px;
+            border-radius:18px;
             overflow:hidden;
-            box-shadow:0 3px 10px rgba(0,0,0,.08);
+            position:relative;
+            box-shadow:0 4px 12px rgba(0,0,0,.08);
         }
 
         .item img{
-            width:130px;
-            height:100px;
+            width:100%;
+            height:110px;
             object-fit:cover;
             display:block;
         }
 
+        .badge{
+            position:absolute;
+            top:8px;
+            left:8px;
+            background:#ff4d00;
+            color:#fff;
+            font-size:10px;
+            font-weight:700;
+            padding:4px 8px;
+            border-radius:999px;
+            z-index:10;
+        }
+
         .title{
-            padding:8px 8px 4px;
+            padding:10px 10px 4px;
             font-size:13px;
             font-weight:600;
-            color:#111;
-            min-height:40px;
+            color:#222;
+
+            min-height:42px;
+
+            overflow:hidden;
+            display:-webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient:vertical;
         }
 
         .price{
-            padding:0 8px 10px;
+            padding:0 10px 10px;
             color:#008cff;
-            font-size:12px;
+            font-size:14px;
             font-weight:700;
         }
 
@@ -101,6 +129,10 @@ app.get("/flashsale", async (req, res) => {
 
                 <div class="item">
 
+                    <div class="badge">
+                        FLASH
+                    </div>
+
                     <img src="https://www.jagel.id/api/listimage/${item.image}">
 
                     <div class="title">
@@ -108,7 +140,7 @@ app.get("/flashsale", async (req, res) => {
                     </div>
 
                     <div class="price">
-                        ${item.currency} ${item.price.toLocaleString()}
+                        Rp ${Number(item.price || 0).toLocaleString("id-ID")}
                     </div>
 
                 </div>
