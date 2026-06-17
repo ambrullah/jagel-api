@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nama": "Ayam Geprek",
+    "harga": 10000,
+    "gambar": "https://via.placeholder.com/150",
+    "diskon": "50%"
+  },
+  {
+    "id": 2,
+    "nama": "Burger Promo",
+    "harga": 15000,
+    "gambar": "https://via.placeholder.com/150",
+    "diskon": "30%"
+  }
+]
