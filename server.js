@@ -121,6 +121,104 @@ app.get("/", (req,res)=>{
 
 const PORT = process.env.PORT || 3000;
 
+app.get("/flashsale", async (req, res) => {
+
+    try {
+
+        const response = await axios.get(
+            "https://app.jagel.id/api/v2/customer/component/350814165266a2fa4f3a6b698.01507135",
+            {
+                params: {
+                    codename: "gocestransportasi",
+                    page: 1
+                }
+            }
+        );
+
+        const items = response.data.data.lists.data;
+
+        let html = `
+        <html>
+        <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>
+
+        body{
+            margin:0;
+            padding:10px;
+            font-family:Arial,sans-serif;
+            background:#f5f5f5;
+        }
+
+        .item{
+            background:#fff;
+            border-radius:12px;
+            overflow:hidden;
+            margin-bottom:12px;
+            box-shadow:0 2px 8px rgba(0,0,0,.08);
+        }
+
+        .item img{
+            width:100%;
+            height:140px;
+            object-fit:cover;
+        }
+
+        .title{
+            padding:10px;
+            font-weight:700;
+        }
+
+        .price{
+            padding:0 10px 10px;
+            color:#ff4d00;
+            font-weight:700;
+        }
+
+        </style>
+        </head>
+        <body>
+        `;
+
+        items.forEach(item => {
+
+            html += `
+            <a href="https://jgjk.mobi/p/${item.view_uid}"
+               style="text-decoration:none;color:black">
+
+                <div class="item">
+
+                    <img src="https://www.jagel.id/api/listimage/${item.image}">
+
+                    <div class="title">
+                        ${item.title}
+                    </div>
+
+                    <div class="price">
+                        Rp ${item.price.toLocaleString()}
+                    </div>
+
+                </div>
+
+            </a>
+            `;
+
+        });
+
+        html += `
+        </body>
+        </html>
+        `;
+
+        res.send(html);
+
+    } catch (err) {
+
+        res.send("Error: " + err.message);
+
+    }
+
+});
 
 app.listen(PORT,()=>{
 
