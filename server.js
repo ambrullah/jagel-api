@@ -167,12 +167,21 @@ app.get("/flashsale", async (req, res) => {
 
 });
 
-app.get("/voucher-test", async (req, res) => {
+app.get("/vouchers", async (req, res) => {
 
-    res.json({
-        success: true,
-        message: "Voucher endpoint aktif"
-    });
+    try {
+
+        // ambil voucher pemilik
+        // ambil voucher mitra
+        // gabungkan
+
+    } catch(err){
+
+        res.status(500).json({
+            error: err.message
+        });
+
+    }
 
 });
 
