@@ -167,6 +167,15 @@ app.get("/flashsale", async (req, res) => {
 
 });
 
+app.get("/voucher-test", async (req, res) => {
+
+    res.json({
+        success: true,
+        message: "Voucher endpoint aktif"
+    });
+
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT,()=>{
