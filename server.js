@@ -171,9 +171,16 @@ app.get("/vouchers", async (req, res) => {
 
     try {
 
+        const uniqueId =
+            "30520025154683f365ea23b97.26657854";
+
+        const ownerVoucher = await axios.get(
+            `https://app.jagel.id/api/mydiscount?filter=0&unique_id=${uniqueId}`
+        );
+
         res.json({
             success: true,
-            message: "Endpoint vouchers aktif"
+            data: ownerVoucher.data
         });
 
     } catch(err){
