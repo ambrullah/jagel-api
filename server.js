@@ -171,9 +171,10 @@ app.get("/vouchers", async (req, res) => {
 
     try {
 
-        // ambil voucher pemilik
-        // ambil voucher mitra
-        // gabungkan
+        res.json({
+            success: true,
+            message: "Endpoint vouchers aktif"
+        });
 
     } catch(err){
 
@@ -184,6 +185,7 @@ app.get("/vouchers", async (req, res) => {
     }
 
 });
+
 
 const PORT = process.env.PORT || 3000;
 
