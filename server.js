@@ -171,17 +171,11 @@ app.get("/vouchers", async (req, res) => {
 
     try {
 
-        const uniqueId =
-            "30520025154683f365ea23b97.26657854";
-
-        const ownerVoucher = await axios.get(
-            `https://app.jagel.id/api/mydiscount?filter=0&unique_id=${uniqueId}`
+        const response = await axios.get(
+            "https://app.jagel.id/api/myapp/30520025154683f365ea23b97.26657854"
         );
 
-        res.json({
-            success: true,
-            data: ownerVoucher.data
-        });
+        res.json(response.data);
 
     } catch(err){
 
@@ -192,7 +186,6 @@ app.get("/vouchers", async (req, res) => {
     }
 
 });
-
 
 const PORT = process.env.PORT || 3000;
 
