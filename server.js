@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const cheerio = require("cheerio");
 
 const app = express();
 
@@ -158,6 +159,24 @@ app.get("/flashsale", async (req, res) => {
         `;
 
         res.send(html);
+
+    } catch (err) {
+
+        res.send("Error : " + err.message);
+
+    }
+
+});
+
+app.get("/fashion", async (req, res) => {
+
+    try {
+
+        const response = await axios.get(
+            "https://jgjk.mobi/m/282513168266a338f586bef13.52829636"
+        );
+
+        res.send(response.data);
 
     } catch (err) {
 
