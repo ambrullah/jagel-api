@@ -178,7 +178,7 @@ app.get("/vouchers", async (req, res) => {
 
         res.json(response.data);
 
-    } catch(err){
+    } catch (err) {
 
         res.status(500).json({
             error: err.message
@@ -259,22 +259,27 @@ app.get("/fashion", async (req, res) => {
             display:block;
         }
 
-        .title{
-            padding:10px 10px 4px;
+        .item_name{
+    padding:10px 10px 6px;
 
-            font-size:13px;
-            font-weight:600;
+    font-size:13px;
 
-            color:#222;
+    line-height:1.4;
 
-            min-height:42px;
+    font-weight:500;
 
-            overflow:hidden;
+    color:#222;
 
-            display:-webkit-box;
-            -webkit-line-clamp:2;
-            -webkit-box-orient:vertical;
-        }
+    height:38px;
+
+    overflow:hidden;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+}
 
         .price{
             padding:0 10px 12px;
@@ -309,8 +314,8 @@ app.get("/fashion", async (req, res) => {
 
                     <img src="https://www.jagel.id/api/listimage/${item.image}">
 
-                    <div class="title">
-                        ${item.title}
+                    <div class="item_name">
+                    ${item.title}
                     </div>
 
                     <div class="price">
@@ -333,7 +338,7 @@ app.get("/fashion", async (req, res) => {
 
         res.send(html);
 
-    } catch(err){
+    } catch (err) {
 
         res.send("Error : " + err.message);
 
@@ -343,8 +348,8 @@ app.get("/fashion", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
 
-console.log("🔥 Server jalan di port " + PORT);
+    console.log("🔥 Server jalan di port " + PORT);
 
 });
