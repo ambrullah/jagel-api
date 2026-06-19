@@ -202,11 +202,11 @@ app.get("/fashion-test", async (req, res) => {
             }
         );
 
-        res.type("text/plain");
-
-        res.send(
-            "PANJANG DATA = " + response.data.length
-        );
+        res.send(`
+        <pre>
+${response.data.replace(/</g,"&lt;")}
+        </pre>
+        `);
 
     } catch (err) {
 
