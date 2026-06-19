@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 
-function createCategoryPage(path, componentId) {
+function createCategoryPage(path, componentId, title = "") {
 
     app.get(path, async (req, res) => {
 
@@ -25,7 +25,31 @@ function createCategoryPage(path, componentId) {
                 }
             );
 
-            const items = response.data.data.lists.data;
+            const items = response.data.data.lists.data || [];
+
+            // Jika tidak ada produk, kirim halaman kosong
+            if (items.length === 0) {
+
+                return res.send(`
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html,body{
+    margin:0;
+    padding:0;
+    background:transparent;
+    overflow:hidden;
+}
+</style>
+</head>
+<body></body>
+</html>
+                `);
+
+            }
 
             let html = `
 <!DOCTYPE html>
@@ -105,11 +129,24 @@ a{
     color:inherit;
 }
 
+.section_title{
+    margin:0 8px 12px;
+    color:#222;
+    font-size:18px;
+    font-weight:700;
+}
+
 </style>
 
 </head>
 
 <body>
+
+${title ? `
+<div class="section_title">
+    ${title}
+</div>
+` : ""}
 
 <div class="wrap">
 `;
@@ -128,7 +165,7 @@ a{
         </div>
 
         <div class="item_price">
-            Rp ${Number(item.price).toLocaleString("id-ID")}
+            Rp ${Number(item.price || 0).toLocaleString("id-ID")}
         </div>
 
     </div>
@@ -164,14 +201,15 @@ createCategoryPage(
 
 createCategoryPage(
     "/fashion",
-    "282513168266a338f586bef13.52829636"
+    "282513168266a338f586bef13.52829636",
+    "Fashion Terbaru"
 );
 
 createCategoryPage(
     "/kecantikan",
-    "562513168266a338f74385b73.47876782"
+    "562513168266a338f74385b73.47876782",
+    "Produk Kecantikan"
 );
-
 
 const PORT = process.env.PORT || 3000;
 
