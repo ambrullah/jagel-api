@@ -188,31 +188,154 @@ app.get("/vouchers", async (req, res) => {
 
 });
 
-app.get("/fashion-test", async (req, res) => {
+app.get("/fashion", async (req, res) => {
 
     try {
 
         const response = await axios.get(
-            "https://jgjk.mobi/m/282513168266a338f586bef13.52829636",
+            "https://app.jagel.id/api/v2/customer/component/282513168266a338f586bef13.52829636",
             {
-                headers: {
-                    "User-Agent":
-                        "Mozilla/5.0"
+                params: {
+                    codename: "gocesapp",
+                    page: 1,
+                    app_mode: 1,
+                    per_page: 8
                 }
             }
         );
 
-        res.send(`
-        <pre>
-${response.data.replace(/</g,"&lt;")}
-        </pre>
-        `);
+        const items = response.data.data.lists.data;
 
-    } catch (err) {
+        let html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
 
-        res.send(
-            "ERROR : " + err.message
-        );
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:transparent;
+            padding:8px;
+            overflow-x:auto;
+            overflow-y:hidden;
+            font-family:Arial,sans-serif;
+        }
+
+        body::-webkit-scrollbar{
+            display:none;
+        }
+
+        .wrap{
+            display:flex;
+            gap:12px;
+        }
+
+        .item{
+            width:140px;
+            flex-shrink:0;
+
+            background:#fff;
+
+            border-radius:18px;
+
+            overflow:hidden;
+
+            box-shadow:0 4px 12px rgba(0,0,0,.08);
+        }
+
+        .item img{
+            width:100%;
+            height:110px;
+            object-fit:cover;
+            display:block;
+        }
+
+        .title{
+            padding:10px 10px 4px;
+
+            font-size:13px;
+            font-weight:600;
+
+            color:#222;
+
+            min-height:42px;
+
+            overflow:hidden;
+
+            display:-webkit-box;
+            -webkit-line-clamp:2;
+            -webkit-box-orient:vertical;
+        }
+
+        .price{
+            padding:0 10px 12px;
+
+            color:#008cff;
+
+            font-size:14px;
+            font-weight:700;
+        }
+
+        a{
+            color:inherit;
+            text-decoration:none;
+        }
+
+        </style>
+
+        </head>
+
+        <body>
+
+        <div class="wrap">
+        `;
+
+
+        items.forEach(item => {
+
+            html += `
+            <a href="action://p/${item.view_uid}">
+
+                <div class="item">
+
+                    <img src="https://www.jagel.id/api/listimage/${item.image}">
+
+                    <div class="title">
+                        ${item.title}
+                    </div>
+
+                    <div class="price">
+                        Rp ${Number(item.price).toLocaleString("id-ID")}
+                    </div>
+
+                </div>
+
+            </a>
+            `;
+
+        });
+
+        html += `
+        </div>
+
+        </body>
+        </html>
+        `;
+
+        res.send(html);
+
+    } catch(err){
+
+        res.send("Error : " + err.message);
 
     }
 
