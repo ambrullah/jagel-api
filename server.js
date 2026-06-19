@@ -168,33 +168,6 @@ app.get("/flashsale", async (req, res) => {
 
 });
 
-app.get("/fashion-test", async (req, res) => {
-
-    try {
-
-        const response = await axios.get(
-            "https://jgjk.mobi/m/282513168266a338f586bef13.52829636",
-            {
-                headers: {
-                    "User-Agent":
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36"
-                }
-            }
-        );
-
-        res.type("text/plain");
-        res.send(
-            "PANJANG DATA = " + response.data.length
-        );
-
-    } catch (err) {
-
-        res.send("ERROR : " + err.message);
-
-    }
-
-});
-
 app.get("/vouchers", async (req, res) => {
 
     try {
@@ -210,6 +183,36 @@ app.get("/vouchers", async (req, res) => {
         res.status(500).json({
             error: err.message
         });
+
+    }
+
+});
+
+app.get("/fashion-test", async (req, res) => {
+
+    try {
+
+        const response = await axios.get(
+            "https://jgjk.mobi/m/282513168266a338f586bef13.52829636",
+            {
+                headers: {
+                    "User-Agent":
+                        "Mozilla/5.0"
+                }
+            }
+        );
+
+        res.type("text/plain");
+
+        res.send(
+            "PANJANG DATA = " + response.data.length
+        );
+
+    } catch (err) {
+
+        res.send(
+            "ERROR : " + err.message
+        );
 
     }
 
