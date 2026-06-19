@@ -34,18 +34,27 @@ function createCategoryPage(path, componentId, title = "") {
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <style>
-html,body{
+
+html,
+body{
     margin:0;
     padding:0;
     background:transparent;
     overflow:hidden;
 }
+
 </style>
+
 </head>
-<body></body>
+
+<body>
+</body>
+
 </html>
                 `);
 
@@ -71,69 +80,116 @@ html,body{
 body{
     background:transparent;
     padding:8px;
-    overflow-x:auto;
-    overflow-y:hidden;
     font-family:Arial,sans-serif;
 }
 
-body::-webkit-scrollbar{
-    display:none;
+
+/* TITLE */
+
+.section_title{
+    margin:0 8px 10px;
+    color:#222;
+    font-size:18px;
+    font-weight:700;
 }
+
+
+/* SLIDER */
 
 .wrap{
     display:flex;
     gap:12px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scrollbar-width:none;
 }
+
+.wrap::-webkit-scrollbar{
+    display:none;
+}
+
+
+/* CARD */
 
 .item{
     width:140px;
+
     flex-shrink:0;
+
     background:#fff;
+
     border-radius:18px;
+
     overflow:hidden;
+
     display:flex;
+
     flex-direction:column;
+
     box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
 
+
+/* IMAGE */
+
 .item img{
     width:100%;
+
     aspect-ratio:1;
+
     object-fit:cover;
+
     display:block;
 }
 
+
+/* PRODUCT NAME */
+
 .item_name{
     padding:10px 10px 6px;
+
     font-size:11px;
+
     line-height:1.4;
+
     font-weight:500;
+
     color:#333;
+
     min-height:40px;
+
     overflow:hidden;
+
     display:-webkit-box;
+
     -webkit-line-clamp:2;
+
     -webkit-box-orient:vertical;
 }
 
+
+/* PRICE */
+
 .item_price{
     margin-top:auto;
+
     padding:0 10px 12px;
+
     color:#008cff;
+
     font-size:15px;
+
     font-weight:700;
 }
+
+
+/* LINK */
 
 a{
     text-decoration:none;
     color:inherit;
-}
-
-.section_title{
-    margin:0 8px 12px;
-    color:#222;
-    font-size:18px;
-    font-weight:700;
 }
 
 </style>
@@ -179,6 +235,7 @@ ${title ? `
 </div>
 
 </body>
+
 </html>
 `;
 
@@ -193,6 +250,7 @@ ${title ? `
     });
 
 }
+
 
 createCategoryPage(
     "/flashsale",
@@ -210,6 +268,7 @@ createCategoryPage(
     "562513168266a338f74385b73.47876782",
     "Produk Kecantikan"
 );
+
 
 const PORT = process.env.PORT || 3000;
 
