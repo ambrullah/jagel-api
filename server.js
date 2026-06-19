@@ -207,70 +207,79 @@ app.get("/fashion", async (req, res) => {
         const items = response.data.data.lists.data;
 
         let html = `
-        <!DOCTYPE html>
-        <html>
-        <head>
+<!DOCTYPE html>
+<html>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
 
-        <style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<style>
 
-        body{
-            background:transparent;
-            padding:8px;
-            overflow-x:auto;
-            overflow-y:hidden;
-            font-family:Arial,sans-serif;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body::-webkit-scrollbar{
-            display:none;
-        }
+body{
+    background:transparent;
+    padding:8px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    font-family:Arial,sans-serif;
+}
 
-        .wrap{
-            display:flex;
-            gap:12px;
-        }
+body::-webkit-scrollbar{
+    display:none;
+}
 
-        .item{
-            width:140px;
-            flex-shrink:0;
+.wrap{
+    display:flex;
+    gap:12px;
+}
 
-            background:#fff;
+.item{
+    width:140px;
 
-            border-radius:18px;
+    flex-shrink:0;
 
-            overflow:hidden;
+    background:#fff;
 
-            box-shadow:0 4px 12px rgba(0,0,0,.08);
-        }
+    border-radius:18px;
 
-        .item img{
-            width:100%;
-            height:110px;
-            object-fit:cover;
-            display:block;
-        }
+    overflow:hidden;
 
-        .item_name{
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.item img{
+    width:100%;
+
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.item_name{
     padding:10px 10px 6px;
 
-    font-size:13px;
+    font-size:11px;
 
     line-height:1.4;
 
     font-weight:500;
 
-    color:#222;
+    color:#333;
 
-    height:38px;
+    min-height:40px;
 
     overflow:hidden;
 
@@ -281,60 +290,62 @@ app.get("/fashion", async (req, res) => {
     -webkit-box-orient:vertical;
 }
 
-        .price{
-            padding:0 10px 12px;
+.item_price{
+    margin-top:auto;
 
-            color:#008cff;
+    padding:0 10px 12px;
 
-            font-size:14px;
-            font-weight:700;
-        }
+    color:#008cff;
 
-        a{
-            color:inherit;
-            text-decoration:none;
-        }
+    font-size:15px;
 
-        </style>
+    font-weight:700;
+}
 
-        </head>
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-        <body>
+</style>
 
-        <div class="wrap">
-        `;
+</head>
 
+<body>
+
+<div class="wrap">
+`;
 
         items.forEach(item => {
 
             html += `
-            <a href="action://p/${item.view_uid}">
+<a href="action://p/${item.view_uid}">
 
-                <div class="item">
+    <div class="item">
 
-                    <img src="https://www.jagel.id/api/listimage/${item.image}">
+        <img src="https://www.jagel.id/api/listimage/${item.image}">
 
-                    <div class="item_name">
-                    ${item.title}
-                    </div>
+        <div class="item_name">
+            ${item.title}
+        </div>
 
-                    <div class="price">
-                        Rp ${Number(item.price).toLocaleString("id-ID")}
-                    </div>
+        <div class="item_price">
+            Rp ${Number(item.price).toLocaleString("id-ID")}
+        </div>
 
-                </div>
+    </div>
 
-            </a>
-            `;
+</a>
+`;
 
         });
 
         html += `
-        </div>
+</div>
 
-        </body>
-        </html>
-        `;
+</body>
+</html>
+`;
 
         res.send(html);
 
