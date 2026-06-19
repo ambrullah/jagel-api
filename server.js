@@ -159,7 +159,7 @@ a{
 
 createCategoryPage(
     "/flashsale",
-    "350814165266a2fa4f3a6b698.01507135"
+    "464113167266a3241aa7cdf37.67370314"
 );
 
 createCategoryPage(
