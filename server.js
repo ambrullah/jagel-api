@@ -176,7 +176,11 @@ app.get("/fashion", async (req, res) => {
             "https://jgjk.mobi/m/282513168266a338f586bef13.52829636"
         );
 
-        res.send(response.data);
+        res.send(`
+            <pre>
+${response.data.substring(0,3000)}
+            </pre>
+        `);
 
     } catch (err) {
 
