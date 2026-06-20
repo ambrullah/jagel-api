@@ -17,7 +17,7 @@ body{
 .voucher-section{
     padding-top: 8px;      /* atas */
     padding-right: 15px;    /* kanan */
-    padding-bottom: 3px;   /* bawah */
+    padding-bottom: -20px;   /* bawah */
     padding-left: 15px;     /* kiri */
 }
 
