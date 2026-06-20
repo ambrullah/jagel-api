@@ -1,8 +1,7 @@
-const bannerConfig = require("../../config/bannerConfig");
 const bannerStyle = require("./bannerStyle");
 const bannerScript = require("./bannerScript");
 
-function bannerTemplate() {
+function bannerTemplate(config) {
 
     let html = `
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ ${bannerStyle}
 
 <div class="banner_title">
 
-    ${bannerConfig.title}
+    ${config.title}
 
 </div>
 
@@ -34,7 +33,7 @@ ${bannerStyle}
     <div class="banner-container" id="bannerContainer">
 `;
 
-    bannerConfig.items.forEach(banner => {
+    config.items.forEach(banner => {
 
         html += `
 <div
@@ -44,9 +43,9 @@ ${bannerStyle}
 
     <a href="${banner.link}">
 
-    <img
-        src="${banner.image}"
-        width="100%">
+        <img
+            src="${banner.image}"
+            width="100%">
 
     </a>
 
