@@ -35,6 +35,12 @@ const categoryConfig = [
         title: "Sayur"
     },
 
+    {
+        path: "/daging",
+        componentId: "525700171266a36d4a070fe27.74799206",
+        title: "Daging"
+    }
+
 ];
 
 module.exports = categoryConfig;
