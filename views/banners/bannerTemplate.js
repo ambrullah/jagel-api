@@ -67,6 +67,9 @@ ${bannerStyle}
 
 <script>
 
+const bannerContainerId =
+"${config.containerId}";
+
 ${bannerScript}
 
 </script>

@@ -1,5 +1,7 @@
 const bannerOngkirConfig = {
 
+    containerId: "item-banner-ongkir",
+
     title: "Promo Ongkir",
 
     items: [

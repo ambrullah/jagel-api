@@ -200,6 +200,7 @@ function smartRefresh(){
             window.parent.postMessage(
             {
                 type:"emptyBanner"
+                containerId: bannerContainerId
             },
             "*");
 
@@ -209,6 +210,7 @@ function smartRefresh(){
             window.parent.postMessage(
             {
                 type:"bannerLoaded"
+                containerId: bannerContainerId
             },
             "*");
 

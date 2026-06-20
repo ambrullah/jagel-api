@@ -1,5 +1,7 @@
 const bannerConfig = {
 
+    containerId: "item-banner",
+
     title: "Promo yang wajib dicek!",
 
     items: [
