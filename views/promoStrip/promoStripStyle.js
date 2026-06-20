@@ -12,7 +12,7 @@ body{
 }
 
 .promo-strip{
-    margin:0 16px 20px;
+    margin:0 16px 12px;
     width:calc(100% - 32px);
     aspect-ratio:16 / 2;
     border-radius:18px;
