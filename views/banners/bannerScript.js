@@ -3,6 +3,7 @@ const bannerScript = `
 const container = document.getElementById("bannerContainer");
 const dotsContainer = document.getElementById("bannerDots");
 
+let allSlides = [];
 let slides = [];
 let dots = [];
 
@@ -47,7 +48,7 @@ function getActiveSlides(){
 
     const now = new Date();
 
-    return slides.filter(slide=>{
+    return allSlides.filter(slide=>{
 
         return (
             now >= slide._start &&
@@ -187,49 +188,36 @@ function startAutoSlide(){
 
 function smartRefresh(){
 
-    const active =
-        getActiveSlides();
+    slides = getActiveSlides();
 
-    if(
-        active.length !==
-        lastActiveCount
-    ){
+    if(slides.length===0){
 
-        if(active.length===0){
-
-            window.parent.postMessage(
-            {
-                type:"emptyBanner"
-                containerId: bannerContainerId
-            },
-            "*");
-
-        }
-        else{
-
-            window.parent.postMessage(
-            {
-                type:"bannerLoaded"
-                containerId: bannerContainerId
-            },
-            "*");
-
-        }
-
-        lastActiveCount =
-            active.length;
-
-        slides = active;
-
-        currentSlide = 0;
-
-        buildDots();
-
-        updateSlider();
-
-        startAutoSlide();
+        window.parent.postMessage(
+        {
+            type:"emptyBanner",
+            containerId: bannerContainerId
+        },
+        "*");
 
     }
+    else{
+
+        window.parent.postMessage(
+        {
+            type:"bannerLoaded",
+            containerId: bannerContainerId
+        },
+        "*");
+
+    }
+
+    currentSlide = 0;
+
+    buildDots();
+
+    updateSlider();
+
+    startAutoSlide();
 
 }
 
@@ -240,7 +228,9 @@ function smartRefresh(){
 
 function initBanner(){
 
-    slides = initSlides();
+    allSlides = initSlides();
+
+    slides = allSlides;
 
     smartRefresh();
 
