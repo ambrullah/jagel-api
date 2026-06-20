@@ -27,7 +27,13 @@ const categoryConfig = [
         path: "/minuman",
         componentId: "092113168266a338e55536e99.19442399",
         title: "Minuman Segar"
-    }
+    },
+
+    {
+        path: "/sayur",
+        componentId: "595600171266a36d46b050173.40376201",
+        title: "Sayur"
+    },
 
 ];
 
