@@ -158,6 +158,31 @@ ${pickMenuScript}
 
 </script>
 
+<script>
+
+function updateHeight(){
+
+    const height =
+        document.body.scrollHeight;
+
+    window.parent.postMessage(
+    {
+        type:"pickMenuHeight",
+        height:height
+    },
+    "*");
+
+}
+
+updateHeight();
+
+window.addEventListener(
+    "resize",
+    updateHeight
+);
+
+</script>
+
 </body>
 
 </html>

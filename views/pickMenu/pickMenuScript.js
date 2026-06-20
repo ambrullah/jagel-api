@@ -1,14 +1,29 @@
 const pickMenuScript = `
 
+function updateHeight(){
+
+    window.parent.postMessage(
+    {
+        type:"pickMenuHeight",
+        height:document.body.scrollHeight
+    },
+    "*");
+
+}
+
+
 function jgcToggle(id, btn){
 
     let target =
         document.getElementById(id);
 
+
     // kalau sudah terbuka → tutup
     if(target.style.display==="block"){
 
         target.style.display = "none";
+
+        updateHeight();
 
         if(btn){
 
@@ -21,6 +36,7 @@ function jgcToggle(id, btn){
         return;
 
     }
+
 
     // tutup semua content
     document
@@ -52,6 +68,8 @@ function jgcToggle(id, btn){
     // buka menu yang dipilih
     target.style.display =
         "block";
+
+    updateHeight();
 
 
     // aktifkan tombol
@@ -112,6 +130,13 @@ function jgcCopyVoucher(id){
     },2000);
 
 }
+
+
+// kirim tinggi awal saat halaman selesai dimuat
+window.addEventListener(
+    "load",
+    updateHeight
+);
 
 `;
 
