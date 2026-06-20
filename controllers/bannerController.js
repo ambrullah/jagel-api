@@ -6,6 +6,9 @@ const bannerConfig =
 const bannerOngkirConfig =
     require("../config/bannerOngkirConfig");
 
+const bannerMakananConfig =
+    require("../config/bannerMakananConfig");
+
 function bannerController(app) {
 
     app.get("/banner", (req, res) => {
@@ -23,6 +26,16 @@ function bannerController(app) {
         res.send(
             bannerTemplate(
                 bannerOngkirConfig
+            )
+        );
+
+    });
+
+    app.get("/banner-makanan", (req, res) => {
+
+        res.send(
+            bannerTemplate(
+                bannerMakananConfig
             )
         );
 
