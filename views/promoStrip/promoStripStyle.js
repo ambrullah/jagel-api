@@ -14,7 +14,7 @@ body{
 .promo-strip{
     margin:0 16px 20px;
     width:calc(100% - 32px);
-    aspect-ratio:16 / 3;
+    aspect-ratio:16 / 2;
     border-radius:18px;
     overflow:hidden;
     cursor:pointer;
