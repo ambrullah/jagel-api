@@ -184,6 +184,166 @@ body{
     font-weight:800;
 }
 
+/* ================= PRODUK TERDEKAT ================= */
+
+.jgc_near_wrap{
+    padding:16px;
+    overflow:hidden;
+}
+
+.jgc_near_title{
+    font-size:15px;
+    font-weight:800;
+    color:#111;
+    margin-bottom:12px;
+}
+
+.jgc_near_scroll{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+}
+
+.jgc_near_scroll::-webkit-scrollbar{
+    display:none;
+}
+
+/* CARD */
+
+.jgc_near_card{
+    flex:none;
+    width:150px;
+    background:#fff;
+    border-radius:16px;
+    padding:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* LINK */
+
+.jgc_near_link{
+    display:block;
+    text-decoration:none;
+    color:#111;
+}
+
+/* IMAGE */
+
+.jgc_near_image{
+    width:100%;
+    height:110px;
+    object-fit:cover;
+    border-radius:12px;
+    display:block;
+    margin-bottom:8px;
+}
+
+/* NAMA */
+
+.jgc_near_name{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    line-height:18px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+/* JARAK */
+
+.jgc_near_distance{
+    display:block;
+    font-size:11px;
+    color:#777;
+    margin-top:4px;
+}
+
+/* STATUS */
+
+.jgc_near_status{
+    margin-top:8px;
+    font-size:11px;
+}
+
+.jgc_near_open{
+    color:#16a34a;
+    font-weight:700;
+}
+
+.jgc_near_status_note{
+    color:#777;
+}
+
+/* ================= PRODUK BARU ================= */
+
+.jgc_new_wrap{
+    padding:16px;
+    overflow:hidden;
+}
+
+#jgc_new{
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+#jgc_new::-webkit-scrollbar{
+    display:none;
+}
+
+#jgc_new #item-head{
+    display:flex;
+    gap:12px;
+}
+
+#jgc_new .item-row{
+    width:150px !important;
+    min-width:150px;
+    display:block !important;
+    margin:0 !important;
+}
+
+#jgc_new .item-link{
+    display:block;
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    text-decoration:none;
+    color:#111;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+#jgc_new .item-image{
+    width:150px !important;
+    height:110px;
+    object-fit:cover;
+    margin:0 !important;
+    display:block;
+}
+
+#jgc_new .item-title{
+    display:block;
+    padding:8px 10px 3px;
+    font-size:13px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#jgc_new .item-price{
+    display:none;
+}
+
+#jgc_new .item-price-format{
+    display:block;
+    padding:0 10px 12px;
+    font-size:12px;
+    font-weight:700;
+    color:#16a34a;
+}
+
 `;
 
 
