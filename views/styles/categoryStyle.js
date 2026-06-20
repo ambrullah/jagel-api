@@ -54,10 +54,11 @@ body{
     line-height:1.4;
     font-weight:500;
     color:#333;
-    min-height:40px;
+    min-height:50px;
+    max-height:50px;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-line-clamp:2;
+    -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
 }
 
