@@ -46,7 +46,7 @@ body{
 
     flex:none;
 
-    width:270px;
+    width:240px;
 
     position:relative;
 
@@ -153,7 +153,7 @@ body{
 
 .voucher-top{
 
-    padding:14px 16px 10px;
+    padding:10px 14px 8px;
 
 }
 
@@ -164,15 +164,15 @@ body{
 
     display:inline-block;
 
-    padding:4px 10px;
+    padding:3px 8px;
 
     border-radius:20px;
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:900;
 
-    margin-bottom:8px;
+    margin-bottom:6px;
 
 }
 
@@ -215,11 +215,11 @@ body{
 
 .voucher-name{
 
-    font-size:15px;
+    font-size:14px;
 
     font-weight:900;
 
-    line-height:20px;
+    line-height:18px;
 
 }
 
@@ -228,9 +228,9 @@ body{
 
 .voucher-desc{
 
-    margin-top:5px;
+    margin-top:3px;
 
-    font-size:12px;
+    font-size:11px;
 
     opacity:.9;
 
@@ -252,7 +252,7 @@ body{
 
 .voucher-bottom{
 
-    padding:12px 16px;
+    padding:8px 14px;
 
 }
 
@@ -276,7 +276,7 @@ body{
 
 .voucher-code{
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:900;
 
@@ -295,11 +295,11 @@ body{
 
     color:#2563eb;
 
-    padding:6px 12px;
+    padding:5px 10px;
 
-    border-radius:8px;
+    border-radius:7px;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
 
@@ -319,9 +319,9 @@ body{
 
 .voucher-expire{
 
-    margin-top:8px;
+    margin-top:6px;
 
-    font-size:11px;
+    font-size:10px;
 
     opacity:.85;
 
