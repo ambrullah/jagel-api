@@ -6,8 +6,11 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const bannerRoutes = require("./routes/bannerRoutes");
 const promoStripController =
     require("./controllers/promoStripController");
-const pickMenuController =
-    require("./controllers/pickMenuController");
+const voucherController =
+    require(
+        "./controllers/voucherController"
+    );
+
 
 const app = express();
 
@@ -16,7 +19,7 @@ app.use(cors());
 categoryRoutes(app);
 bannerRoutes(app);
 promoStripController(app);
-pickMenuController(app);
+voucherController(app);
 
 const PORT = process.env.PORT || 3000;
 
