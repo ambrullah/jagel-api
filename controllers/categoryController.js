@@ -1,5 +1,5 @@
 const axios = require("axios");
-
+const jagelConfig = require("../config/jagelConfig");
 const categoryTemplate = require("../views/categoryTemplate");
 const emptyCategoryTemplate = require("../views/emptyCategoryTemplate");
 
@@ -12,12 +12,7 @@ function createCategoryPage(app, path, componentId, title = "") {
             const response = await axios.get(
                 `https://app.jagel.id/api/v2/customer/component/${componentId}`,
                 {
-                    params: {
-                        codename: "gocesapp",
-                        page: 1,
-                        app_mode: 1,
-                        per_page: 8
-                    }
+                    params: jagelConfig
                 }
             );
 
