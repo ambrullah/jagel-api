@@ -6,6 +6,14 @@ const voucherStyle = `
     box-sizing:border-box;
 }
 
+html,
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background:transparent;
+}
+
 body{
     background:transparent;
     font-family:Arial,sans-serif;
@@ -15,10 +23,10 @@ body{
 /* SECTION */
 
 .voucher-section{
-    padding-top: 8px;      /* atas */
-    padding-right: 15px;    /* kanan */
-    padding-bottom: -20px;   /* bawah */
-    padding-left: 15px;     /* kiri */
+    padding-top:8px;
+    padding-right:15px;
+    padding-bottom:0;
+    padding-left:15px;
 }
 
 .voucher-title{
@@ -35,7 +43,7 @@ body{
     display:flex;
     gap:14px;
     overflow-x:auto;
-    padding-bottom:5px;
+    padding-bottom:0;
 }
 
 .voucher-scroll::-webkit-scrollbar{
