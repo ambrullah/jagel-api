@@ -15,6 +15,18 @@ const categoryConfig = [
         path: "/kecantikan",
         componentId: "562513168266a338f74385b73.47876782",
         title: "Produk Kecantikan"
+    },
+
+    {
+        path: "/kuliner",
+        componentId: "482013168266a338e404198a9.02087100",
+        title: "Kuliner Favorit"
+    },
+
+    {
+        path: "/minuman",
+        componentId: "092113168266a338e55536e99.19442399",
+        title: "Minuman Segar"
     }
 
 ];
