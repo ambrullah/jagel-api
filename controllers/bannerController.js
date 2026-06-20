@@ -9,6 +9,9 @@ const bannerOngkirConfig =
 const bannerMakananConfig =
     require("../config/bannerMakananConfig");
 
+const bannerFashionConfig =
+    require("../config/bannerFashionConfig");
+
 function bannerController(app) {
 
     app.get("/banner", (req, res) => {
@@ -36,6 +39,16 @@ function bannerController(app) {
         res.send(
             bannerTemplate(
                 bannerMakananConfig
+            )
+        );
+
+    });
+
+    app.get("/banner-fashion", (req, res) => {
+
+        res.send(
+            bannerTemplate(
+                bannerFashionConfig
             )
         );
 
