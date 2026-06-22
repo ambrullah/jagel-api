@@ -13,6 +13,17 @@ async function topupApiController(
         const session =
             req.body.session;
 
+        console.log({
+
+            amount,
+
+            session,
+
+            apikey:
+                process.env.JAGEL_API_KEY
+
+        });
+
         const response =
             await axios.post(
 
@@ -46,12 +57,21 @@ async function topupApiController(
 
             );
 
+        const data =
+            response.data.data;
+
         res.json({
 
             success: true,
 
-            data:
-                response.data.data
+            order_no:
+                data.order_no,
+
+            total:
+                data.total,
+
+            confirmation_code:
+                data.confirmation_code
 
         });
 
@@ -60,15 +80,23 @@ async function topupApiController(
     catch (error) {
 
         console.log(
-            error.response?.data
+
+            "TOPUP ERROR:",
+
+            error.response?.data ||
+
+            error.message
+
         );
 
         res.json({
 
             success: false,
 
-            message:
+            error:
+
                 error.response?.data ||
+
                 error.message
 
         });
