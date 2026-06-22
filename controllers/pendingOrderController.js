@@ -1,3 +1,7 @@
+console.log(
+    "APIKEY =",
+    process.env.JAGEL_API_KEY
+);
 const axios = require("axios");
 
 const pendingOrderTemplate =
