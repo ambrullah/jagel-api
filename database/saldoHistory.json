@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "tanggal": "22 Juni 2026",
+    "jam": "15:30",
+    "jenis": "Top Up",
+    "nominal": 50000,
+    "status": "Masuk",
+    "keterangan": "Top up saldo berhasil"
+  },
+  {
+    "id": 2,
+    "tanggal": "22 Juni 2026",
+    "jam": "15:35",
+    "jenis": "Pembelian",
+    "nominal": 15000,
+    "status": "Keluar",
+    "keterangan": "Pembelian produk"
+  }
+]
