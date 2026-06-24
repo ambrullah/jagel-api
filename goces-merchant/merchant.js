@@ -1,0 +1,1 @@
+console.log("merchant.js berhasil dimuat");
