@@ -1,1 +1,1 @@
-console.log("merchant.js berhasil dimuat");
+alert("JS dari Vercel berhasil");
