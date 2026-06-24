@@ -28,6 +28,11 @@ app.use(
     })
 );
 
+app.use(
+    "/goces-merchant",
+    express.static("goces-merchant")
+);
+
 categoryRoutes(app);
 bannerRoutes(app);
 promoStripController(app);
