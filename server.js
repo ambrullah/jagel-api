@@ -36,6 +36,13 @@ app.use(
     )
 );
 
+app.use(
+    "/goces-customer",
+    express.static(
+        path.join(__dirname, "goces-customer")
+    )
+);
+
 categoryRoutes(app);
 bannerRoutes(app);
 promoStripController(app);
