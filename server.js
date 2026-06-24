@@ -4,6 +4,7 @@ console.log(process.env.JAGEL_API_KEY);
 const express = require("express");
 const cors = require("cors");
 const cheerio = require("cheerio");
+const path = require("path");
 
 const categoryRoutes = require("./routes/categoryRoutes");
 const bannerRoutes = require("./routes/bannerRoutes");
@@ -30,7 +31,9 @@ app.use(
 
 app.use(
     "/goces-merchant",
-    express.static("goces-merchant")
+    express.static(
+        path.join(__dirname, "goces-merchant")
+    )
 );
 
 categoryRoutes(app);
