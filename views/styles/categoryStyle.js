@@ -14,7 +14,7 @@ body{
 .section_title{
     margin:0 8px 10px;
     color:#222;
-    font-size:18px;
+    font-size:15px;
     font-weight:700;
 }
 
