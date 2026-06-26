@@ -50,7 +50,7 @@ body{
 
 .item_name{
     padding:10px 10px 6px;
-    font-size:11px;
+    font-size:13px;
     line-height:1.4;
     font-weight:500;
     color:#333;
@@ -65,8 +65,8 @@ body{
 .item_price{
     margin-top:auto;
     padding:0 10px 12px;
-    color:#008cff;
-    font-size:15px;
+    color:##111827;
+    font-size:14px;
     font-weight:700;
 }
 
