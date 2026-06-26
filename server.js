@@ -1,6 +1,5 @@
 require("dotenv").config();
-console.log(process.env.JAGEL_API_KEY);
-
+const gocesTransferRoute = require("./routes/gocesTransferRoute");
 const express = require("express");
 const cors = require("cors");
 const cheerio = require("cheerio");
@@ -56,6 +55,8 @@ require(
 require(
     "./routes/topupApiRoute"
 )(app);
+
+app.use("/api", gocesTransferRoute);
 
 const PORT = process.env.PORT || 3000;
 
