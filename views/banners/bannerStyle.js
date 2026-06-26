@@ -13,9 +13,9 @@ body{
 
 .banner_title{
     margin:0 16px 12px;
-    color:#222;
+    color:##111827;
     font-size:15px;
-    font-weight:800;
+    font-weight:700;
     letter-spacing:-0.3px;
 }
 
