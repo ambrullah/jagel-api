@@ -2675,3 +2675,96 @@ a {
 .nav-item:not(.active) .nav-label {
   color: var(--gray-400);
 }
+
+/* pembatas halaman transfer atau more 1 untuk halaman beranda */
+
+.akbartransfer-header {
+  height: 78px;
+  background: var(--blue-700);
+  border-radius: 0 0 24px 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  color: var(--gray-50);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.akbartransfer-back {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.akbartransfer-back:active {
+  transform: scale(0.92);
+}
+
+.akbartransfer-header-title {
+  margin-left: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.akbartransfer-content {
+  padding: 20px;
+}
+
+.akbartransfer-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+}
+
+.akbartransfer-menu-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.akbartransfer-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 72px;
+}
+
+.akbartransfer-menu-card {
+  width: 64px;
+  height: 64px;
+  background: var(--gray-50);
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.akbartransfer-menu-card:active {
+  transform: scale(0.93);
+}
+
+.akbartransfer-menu-title {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+svg {
+  width: 30px;
+  height: 30px;
+  stroke: var(--blue-700);
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
