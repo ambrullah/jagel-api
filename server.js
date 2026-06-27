@@ -42,19 +42,6 @@ app.use(
     )
 );
 
-app.use(
-    "/css",
-    express.static(
-        path.join(__dirname, "views/css")
-    )
-);
-
-app.use(
-    "/js",
-    express.static(
-        path.join(__dirname, "views/js")
-    )
-);
 
 categoryRoutes(app);
 bannerRoutes(app);
