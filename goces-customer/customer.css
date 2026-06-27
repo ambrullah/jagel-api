@@ -2758,13 +2758,3 @@ a {
   font-weight: 500;
   color: var(--gray-600);
 }
-
-svg {
-  width: 30px;
-  height: 30px;
-  stroke: var(--blue-700);
-  stroke-width: 2.2;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
