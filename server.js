@@ -49,6 +49,13 @@ app.use(
     )
 );
 
+app.use(
+    "/js",
+    express.static(
+        path.join(__dirname, "views/js")
+    )
+);
+
 categoryRoutes(app);
 bannerRoutes(app);
 promoStripController(app);
