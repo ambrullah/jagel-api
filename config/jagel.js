@@ -4,10 +4,8 @@ module.exports = {
 
     apiTujuan: process.env.JAGEL_API_TUJUAN,
 
-    appName: process.env.APP_NAME,
+    biayaAdmin: 500,
 
-    adminFee: Number(process.env.ADMIN_FEE || 500),
-
-    secretKey: process.env.SECRET_KEY
+    namaApk: "GOCES"
 
 };

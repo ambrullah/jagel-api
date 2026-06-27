@@ -1,21 +1,14 @@
 const express = require("express");
-
 const router = express.Router();
+const transferController = require("../controllers/gocesTransferController");
 
-const transferController =
-    require("../controllers/gocesTransferController");
+// Endpoint Cek User
+router.post("/check-user", transferController.checkUser);
 
-router.post(
-    "/check-user",
-    transferController.checkUser
-);
+// Endpoint Cek Saldo
+router.post("/check-balance", transferController.checkBalance);
 
-router.post(
-
-    "/transfer",
-
-    transferController.transfer
-
-);
+// Endpoint Transfer
+router.post("/transfer", transferController.transfer);
 
 module.exports = router;
