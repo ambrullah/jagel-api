@@ -2762,12 +2762,12 @@ a {
 }
 
 /* Icon Styling */
-.akbartransfer-back i {
+.akbartransfer-header .akbartransfer-back i {
+  color: var(--gray-700) !important;
   font-size: 20px;
-  color: var(--gray-700);
 }
 
 .akbartransfer-menu-card i {
+  color: var(--blue-700) !important;
   font-size: 28px;
-  color: #2962ff;
 }
