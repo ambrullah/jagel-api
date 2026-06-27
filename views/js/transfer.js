@@ -1,11 +1,6 @@
-// =========================
-// script halaman transfer yang ada di home
-// =========================
 $(document).ready(function () {
     // Konfigurasi
     const biayaadmin = 500;
-    const apiasal = "ZyhskJMRRFVgfKqTKqsNadYtTQ3AK9QK1itUfSxtCra6bzKiCH";
-    const apitujuan = "ZyhskJMRRFVgfKqTKqsNadYtTQ3AK9QK1itUfSxtCra6bzKiCH";
     const useragen = "{username}";
     const namaagen = "{nama}";
 
@@ -24,11 +19,16 @@ $(document).ready(function () {
     // 1. CEK SALDO AWAL
     function checkInitialBalance() {
         $.ajax({
-            type: 'get',
-            dataType: 'json',
-            url: "https://api.jagel.id/v1/balance/check?type=username&value=" + useragen + "&apikey=" + apiasal,
-            success: function (data) {
-                myBalanceText.innerHTML = rupiah(data.data.balance);
+            type: 'POST',
+            url: "https://jagel-api.vercel.app/api/check-balance",
+            contentType: "application/json",
+            data: JSON.stringify({ username: useragen }),
+            success: function (res) {
+                if (res.success && res.data) {
+                    myBalanceText.innerHTML = rupiah(Number(res.data.balance || 0));
+                } else {
+                    myBalanceText.innerHTML = "Rp 0";
+                }
             },
             error: function () {
                 myBalanceText.innerHTML = "Rp 0";
@@ -61,13 +61,19 @@ $(document).ready(function () {
 
         receiverName.innerHTML = "Mencari...";
         $.ajax({
-            type: 'get',
-            url: "https://api.jagel.id/v1/user?type=phone&value=" + aa + "&apikey=" + apitujuan,
-            success: function (data) {
-                if (data.data.username === useragen) {
-                    receiverName.innerHTML = "Anda tidak dapat melakukan transfer ke akun sendiri.";
+            type: 'POST',
+            url: "https://jagel-api.vercel.app/api/check-user",
+            contentType: "application/json",
+            data: JSON.stringify({ phone: aa }),
+            success: function (res) {
+                if (res.success && res.data) {
+                    if (res.data.username === useragen) {
+                        receiverName.innerHTML = "Anda tidak dapat melakukan transfer ke akun sendiri.";
+                    } else {
+                        receiverName.innerHTML = res.data.username;
+                    }
                 } else {
-                    receiverName.innerHTML = data.data.username;
+                    receiverName.innerHTML = "Tidak ditemukan!";
                 }
                 validateForm();
             },
@@ -107,77 +113,52 @@ $(document).ready(function () {
             if (will) {
                 $("#loadingBox").css("display", "flex");
 
-                // CEK SALDO REAL-TIME
+                // PROSES TRANSFER KE BACKEND
                 $.ajax({
-                    type: 'get',
-                    dataType: 'json',
-                    url: "https://api.jagel.id/v1/balance/check?type=username&value=" + useragen + "&apikey=" + apiasal,
-                    success: function (data) {
-                        var liveBalance = data.data.balance;
+                    url: "https://jagel-api.vercel.app/api/transfer",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        username: useragen,
+                        phone: nohp,
+                        amount: jumlah,
+                        note: catatan || ""
+                    }),
+                    success: function (res) {
+                        $("#loadingBox").hide();
 
-                        if (liveBalance < totalPembayaran) {
-                            $("#loadingBox").hide();
-                            transferBtn.disabled = false; // Re-enable on error
-                            swal("Gagal!", "Saldo tidak mencukupi.", "error");
-                            return;
-                        }
+                        if (res.success) {
+                            // Waktu Realtime
+                            const now = new Date();
+                            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                            const dateString = now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear();
+                            const timeString = now.toLocaleTimeString('id-ID', { hour12: false }) + " WIB";
 
-                        // CHAIN TRANSFER
-                        $.ajax({
-                            url: 'https://api.jagel.id/v1/balance/adjust',
-                            type: "POST",
-                            contentType: "application/json",
-                            data: JSON.stringify({ type: 'phone', value: nohp, apikey: apitujuan, amount: jumlah, note: "Transfer dari " + namaagen + (catatan ? ": " + catatan : "") }),
-                            success: function () {
-                                $.ajax({ url: 'https://api.jagel.id/v1/message/send', type: "POST", contentType: "application/json", data: JSON.stringify({ type: 'phone', value: nohp, apikey: apitujuan, content: "Saldo diterima dari " + namaagen }) });
+                            // Update struk
+                            document.getElementById("rNama").innerHTML = receiverName.innerHTML;
+                            document.getElementById("rPhone").innerHTML = nohp;
+                            document.getElementById("rAmount").innerHTML = rupiah(jumlah);
+                            document.getElementById("rTotal").innerHTML = rupiah(totalPembayaran);
+                            document.getElementById("rDate").innerHTML = dateString + "<br>" + timeString;
 
-                                $.ajax({
-                                    url: 'https://api.jagel.id/v1/balance/adjust', type: "POST", contentType: "application/json",
-                                    data: JSON.stringify({ type: 'username', value: useragen, apikey: apiasal, amount: -totalPembayaran, note: "Transfer ke " + nohp }),
-                                    success: function () {
-                                        $("#loadingBox").hide();
-
-                                        // Waktu Realtime
-                                        const now = new Date();
-                                        const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-                                        const dateString = now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear();
-                                        const timeString = now.toLocaleTimeString('id-ID', { hour12: false }) + " WIB";
-
-                                        // Update struk
-                                        document.getElementById("rNama").innerHTML = receiverName.innerHTML;
-                                        document.getElementById("rPhone").innerHTML = nohp;
-                                        document.getElementById("rAmount").innerHTML = rupiah(jumlah);
-                                        document.getElementById("rTotal").innerHTML = rupiah(totalPembayaran);
-                                        document.getElementById("rDate").innerHTML = dateString + "<br>" + timeString;
-
-                                        // Handle Catatan
-                                        if (catatan && catatan.trim() !== "") {
-                                            document.getElementById("rNote").innerHTML = catatan;
-                                            document.getElementById("rNoteRow").style.display = "flex";
-                                        } else {
-                                            document.getElementById("rNoteRow").style.display = "none";
-                                        }
-
-                                        $("#successModal").css("display", "flex");
-                                    },
-                                    error: function () {
-                                        $("#loadingBox").hide();
-                                        transferBtn.disabled = false;
-                                        swal("Error", "Gagal menyelesaikan transaksi.", "error");
-                                    }
-                                });
-                            },
-                            error: function () {
-                                $("#loadingBox").hide();
-                                transferBtn.disabled = false;
-                                swal("Error", "Gagal menghubungi server.", "error");
+                            // Handle Catatan
+                            if (catatan && catatan.trim() !== "") {
+                                document.getElementById("rNote").innerHTML = catatan;
+                                document.getElementById("rNoteRow").style.display = "flex";
+                            } else {
+                                document.getElementById("rNoteRow").style.display = "none";
                             }
-                        });
+
+                            $("#successModal").css("display", "flex");
+                        } else {
+                            swal("Gagal", res.message || "Transfer gagal", "error");
+                            transferBtn.disabled = false;
+                        }
                     },
-                    error: function () {
+                    error: function (err) {
                         $("#loadingBox").hide();
                         transferBtn.disabled = false;
-                        swal("Error", "Gagal mengecek saldo terbaru.", "error");
+                        swal("Error", err.responseJSON?.message || "Terjadi kesalahan pada server.", "error");
                     }
                 });
             } else {

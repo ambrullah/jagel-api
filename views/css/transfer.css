@@ -1,6 +1,3 @@
-/* ===========================
-           RESET & HALAMAN
-        =========================== */
 * {
   margin: 0;
   padding: 0;
@@ -25,8 +22,8 @@ body {
 }
 
 /* ===========================
-           HEADER
-        =========================== */
+       HEADER
+    =========================== */
 .goces-transfer-header {
   display: flex;
   align-items: center;
@@ -61,8 +58,8 @@ body {
 }
 
 /* ===========================
-           CARD & FORM
-        =========================== */
+       CARD & FORM
+    =========================== */
 .goces-transfer-card {
   background: #ffffff;
   border-radius: 20px;
@@ -111,8 +108,8 @@ textarea {
 }
 
 /* ===========================
-           PENERIMA
-        =========================== */
+       PENERIMA
+    =========================== */
 .goces-transfer-receiver-box {
   display: flex;
   justify-content: space-between;
@@ -158,8 +155,8 @@ textarea {
 }
 
 /* ===========================
-           RINGKASAN & SALDO
-        =========================== */
+       RINGKASAN & SALDO
+    =========================== */
 .goces-transfer-summary-card {
   background: #f8f9fb;
   border-radius: 15px;
@@ -197,8 +194,8 @@ textarea {
 }
 
 /* ===========================
-           BUTTON
-        =========================== */
+       BUTTON
+    =========================== */
 #transferBtn {
   width: 100%;
   height: 54px;
@@ -224,8 +221,8 @@ textarea {
 }
 
 /* ===========================
-           LOADING & SUCCESS MODAL
-        =========================== */
+       LOADING & SUCCESS MODAL
+    =========================== */
 .goces-transfer-loading-box {
   position: fixed;
   inset: 0;
